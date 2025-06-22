@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "env": {
+    "ADMIN_PASSWORD": "@admin-password",
+    "RSVP_ACCESS_PASSWORD": "@rsvp-access-password"
+  },
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
+}
