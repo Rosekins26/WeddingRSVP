@@ -1,19 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static exports if needed
-  output: "standalone",
-
-  // Image optimization
-  images: {
-    domains: ["your-domain.com"],
-    unoptimized: true, // For static export
-  },
-
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+
+  // Image optimization
+  images: {
+    unoptimized: true,
   },
 
   // Compression
@@ -30,7 +26,7 @@ const nextConfig = {
         headers: [
           {
             key: "X-Frame-Options",
-            value: "ALLOWALL", // Allow embedding in iframes
+            value: "ALLOWALL",
           },
           {
             key: "Content-Security-Policy",
@@ -42,21 +38,8 @@ const nextConfig = {
     ]
   },
 
-  // Redirects if needed
-  async redirects() {
-    return [
-      {
-        source: "/home",
-        destination: "/",
-        permanent: true,
-      },
-    ]
-  },
-
-  // Environment variables
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
-  },
+  // Fixed: Updated to use serverExternalPackages instead of experimental.serverComponentsExternalPackages
+  serverExternalPackages: ["@neondatabase/serverless"],
 }
 
 module.exports = nextConfig

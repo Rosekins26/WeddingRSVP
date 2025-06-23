@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "env": {
-    "ADMIN_PASSWORD": "@admin-password",
-    "RSVP_ACCESS_PASSWORD": "@rsvp-access-password"
-  },
+  "buildCommand": "npm run build",
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
+    }
+  },
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=4096"
     }
   }
 }
